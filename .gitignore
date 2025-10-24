@@ -34,3 +34,4 @@ build/
 
 database.mv.db
 database.trace.db
+out
