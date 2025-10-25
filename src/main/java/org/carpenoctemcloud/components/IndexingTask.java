@@ -31,8 +31,9 @@ public class IndexingTask {
     /**
      * Indexes all servers every 2 hours,
      * with an initial delay(20 minutes) to prevent that testing will keep requesting from the servers.
+     * initialDelay = 20 * 60 * 1000,
      */
-    @Scheduled(initialDelay = 20 * 60 * 1000, fixedDelay = INDEXING_RATE_IN_HOURS * 60 * 60 * 1000)
+    @Scheduled(fixedDelay = INDEXING_RATE_IN_HOURS * 60 * 60 * 1000)
     public void indexAllServers() {
         IndexingListener listener = new IndexingListenerImpl(remoteFileService);
 

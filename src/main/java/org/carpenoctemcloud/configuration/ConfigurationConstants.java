@@ -17,4 +17,9 @@ public class ConfigurationConstants {
      * it will be deleted.
      */
     public static final int MAX_AGE_CACHE_IN_DAYS = 4;
+
+    /**
+     * Limits how many films can be queried at once.
+     */
+    public static final int MAX_FETCH_SIZE = 20;
 }

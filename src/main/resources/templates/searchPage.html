@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset=" UTF-8">
+    <title>Carpe Noctem Cloud</title>
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+</head>
+<body>
+<div class="d-flex justify-content-center">
+    <form class="w-75 m-3 d-flex flex-row justify-content-center" action="/search" method="get"
+          id="searchForm">
+        <label hidden="hidden" for="inputQuery"></label><input
+            class="form-control m-0 w-75 h-100 rounded-end-0"
+            th:value="${query}"
+            placeholder="search..."
+            type="search" name="query"
+            id="inputQuery">
+        <label hidden="hidden" for="inputOffset"></label><input class="m-0 w-25 h-100" type="number"
+                                                                name="offset"
+                                                                th:value="0"
+                                                                id="inputOffset"
+                                                                hidden="hidden">
+        <input class="btn btn-primary rounded-start-0" type="submit" value="submit">
+    </form>
+</div>
+</body>
+</html>

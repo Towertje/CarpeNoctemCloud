@@ -21,6 +21,9 @@ public class RemoteFile {
     @GeneratedValue
     private Long id;
 
+    @Column(length = 4018)
+    private String searchText;
+
     public RemoteFile(String name, String downloadURL, Timestamp lastIndexed) {
         this.name = name;
         this.downloadURL = downloadURL;

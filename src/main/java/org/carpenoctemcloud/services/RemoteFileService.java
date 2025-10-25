@@ -29,7 +29,6 @@ public class RemoteFileService {
         repository.deleteAllByLastIndexedBefore(cutOff);
     }
 
-
     /**
      * Adds a file to the cache database.
      *

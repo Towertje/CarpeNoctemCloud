@@ -23,6 +23,6 @@ public class IndexingListenerImpl implements IndexingListener {
 
     @Override
     public void OnErrorWhileIndexing(Exception exception) {
-        logger.error(exception.getMessage());
+        logger.warn(exception.getMessage());
     }
 }
