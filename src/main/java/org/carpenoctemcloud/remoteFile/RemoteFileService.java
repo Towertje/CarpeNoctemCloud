@@ -52,6 +52,13 @@ public class RemoteFileService {
         SqlParameterSource source =
                 new MapSqlParameterSource().addValue("offset", offset).addValue("search", search)
                         .addValue("limit", ConfigurationConstants.MAX_FETCH_SIZE);
+
+        if (search == null || search.isBlank()) {
+            return template.query("""
+                                          SELECT * FROM remote_file LIMIT :limit OFFSET :offset;
+                                          """, source, new RemoteFileMapper());
+        }
+
         return template.query("""
                                       SELECT * FROM remote_file
                                                WHERE search_vector @@ websearch_to_tsquery(:search)
