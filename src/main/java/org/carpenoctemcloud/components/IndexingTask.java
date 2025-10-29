@@ -17,12 +17,21 @@ import org.springframework.stereotype.Component;
 
 import static org.carpenoctemcloud.configuration.ConfigurationConstants.INDEXING_RATE_IN_HOURS;
 
+/**
+ * Class which embodies the indexing task.
+ * It runs periodically to make sure the database is up to date.
+ */
 @Component
 public class IndexingTask {
     private final Logger logger = LoggerFactory.getLogger(IndexingTask.class);
 
     private final RemoteFileService remoteFileService;
 
+    /**
+     * Constructor for the indexing task, Requires remoteFileService to save the indexed files.
+     *
+     * @param remoteFileService The remoteFileService handling db requests.
+     */
     public IndexingTask(RemoteFileService remoteFileService) {
         this.remoteFileService = remoteFileService;
     }

@@ -16,6 +16,9 @@ import org.springframework.web.server.ResponseStatusException;
 
 import static org.carpenoctemcloud.configuration.ConfigurationConstants.MAX_FETCH_SIZE;
 
+/**
+ * Mapper for the search page located at "/search/".
+ */
 @Controller
 @RequestMapping("/search")
 public class searchPageController {
@@ -23,10 +26,23 @@ public class searchPageController {
     final RemoteFileService service;
     final Logger logger = LoggerFactory.getLogger(searchPageController.class);
 
+    /**
+     * Constructor of the search page controller.
+     *
+     * @param service The RemoteFileService used to interact with the RemoteFile table.
+     */
     public searchPageController(RemoteFileService service) {
         this.service = service;
     }
 
+    /**
+     * Main page for the search page.
+     *
+     * @param model  The model which contains the variables to be rendered.
+     * @param query  The search query given to the user.
+     * @param offset The offset of the search query.
+     * @return The template of the search page with the found results.
+     */
     @GetMapping({"", "/"})
     public String searchPage(Model model,
                              @RequestParam(required = false, defaultValue = "") String query,
@@ -41,6 +57,14 @@ public class searchPageController {
         return "searchPage";
     }
 
+    /**
+     * The redirect-file created for the specific id of a RemoteFile.
+     * Is meant to be downloaded from not seen by the user.
+     *
+     * @param model The model of the Thymeleaf ssr.
+     * @param id    The id of the RemoteFile.
+     * @return The downloadable file or a 400 error if the id doesn't match a RemoteFile.
+     */
     @GetMapping({"/redirect-file/{id}", "/redirect-file/{id}/"})
     public String downloadFile(Model model, @PathVariable int id) {
         Optional<RemoteFile> file = service.getRemoteFileByID(id);

@@ -10,8 +10,13 @@ import org.slf4j.LoggerFactory;
 public class IndexingListenerImpl implements IndexingListener {
 
     private final RemoteFileService fileService;
-    private Logger logger = LoggerFactory.getLogger(IndexingListenerImpl.class);
+    private final Logger logger = LoggerFactory.getLogger(IndexingListenerImpl.class);
 
+    /**
+     * Constructor of the IndexingListenerImpl. Requires RemoteFileService to save indexed files.
+     *
+     * @param fileService The RemoteFileService.
+     */
     public IndexingListenerImpl(RemoteFileService fileService) {
         this.fileService = fileService;
     }

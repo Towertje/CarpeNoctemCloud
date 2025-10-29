@@ -10,11 +10,19 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Service;
 
+/**
+ * Class with methods to access the RemoteFile table.
+ */
 @Service
 public class RemoteFileService {
 
     final NamedParameterJdbcTemplate template;
 
+    /**
+     * Constructs a new RemoteFileService.
+     *
+     * @param template The template from JDBC to execute queries in.
+     */
     public RemoteFileService(NamedParameterJdbcTemplate template) {
         this.template = template;
     }
@@ -49,6 +57,14 @@ public class RemoteFileService {
                                 """, source);
     }
 
+    /**
+     * Searches for RemoteFiles matching the search parameter.
+     * The list is at most equal to the max fetch size set in {@link ConfigurationConstants}.
+     *
+     * @param search The search parameter.
+     * @param offset The offset of the search.
+     * @return The list of remote files matching the input.
+     */
     public List<RemoteFile> searchRemoteFiles(String search, int offset) {
         SqlParameterSource source =
                 new MapSqlParameterSource().addValue("offset", offset).addValue("search", search)
@@ -68,6 +84,12 @@ public class RemoteFileService {
                                       """, source, new RemoteFileMapper());
     }
 
+    /**
+     * Retrieves a RemoteFile based on its ID.
+     *
+     * @param id The ID of the RemoteFile.
+     * @return The RemoteFile or an empty optional if no RemoteFile exists.
+     */
     public Optional<RemoteFile> getRemoteFileByID(int id) {
         SqlParameterSource source = new MapSqlParameterSource().addValue("id", id);
         List<RemoteFile> result =
