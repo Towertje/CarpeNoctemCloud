@@ -8,7 +8,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
-import static org.carpenoctemcloud.configuration.ConfigurationConstants.CLEANUP_RATE_IN_HOURS;
 import static org.carpenoctemcloud.configuration.ConfigurationConstants.MAX_AGE_CACHE_IN_DAYS;
 
 /**
@@ -31,7 +30,7 @@ public class CleanupTask {
     /**
      * Deletes old files periodically.
      */
-    @Scheduled(fixedDelay = CLEANUP_RATE_IN_HOURS * 60 * 60 * 1000)
+    @Scheduled(cron = "0 0 2 * * *")
     public void cleanupOldFiles() {
         logger.info("Started cleanup of old files.");
         Timestamp cutOff =

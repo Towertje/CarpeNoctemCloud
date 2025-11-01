@@ -15,8 +15,6 @@ import org.springframework.format.datetime.standard.DurationFormatterUtils;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
-import static org.carpenoctemcloud.configuration.ConfigurationConstants.INDEXING_RATE_IN_HOURS;
-
 /**
  * Class which embodies the indexing task.
  * It runs periodically to make sure the database is up to date.
@@ -38,10 +36,9 @@ public class IndexingTask {
 
 
     /**
-     * Indexes all servers every 2 hours,
-     * with an initial delay(20 minutes) to prevent that testing will keep requesting from the servers.
+     * Indexes all the servers every so often to keep the cache up to date.
      */
-    @Scheduled(initialDelay = 20 * 60 * 1000, fixedDelay = INDEXING_RATE_IN_HOURS * 60 * 60 * 1000)
+    @Scheduled(cron = "0 0 3 */2 * *")
     public void indexAllServers() {
         IndexingListener listener = new IndexingListenerImpl(remoteFileService);
 
