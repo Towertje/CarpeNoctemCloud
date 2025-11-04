@@ -34,7 +34,9 @@
                     <p th:text="${result.name()}"></p>
                     <div class="d-flex flex-row justify-content-evenly">
                         <a th:href="'/redirect-file/WINDOWS/' + ${result.id()}"
-                           th:download="'urlArchive'+${result.id()}+'.zip'">Windows</a>
+                           download>Windows</a>
+                        <a th:href="'/redirect-file/MAC/' + ${result.id()}"
+                           download>macOS</a>
                         <a th:href="'/redirect-file/' + ${result.id()}"
                            th:download="${result.id()}+'.html'">Universal (semi-broken)</a>
                     </div>
