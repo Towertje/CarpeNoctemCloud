@@ -1,4 +1,4 @@
-package org.carpenoctemcloud.components;
+package org.carpenoctemcloud.tasks;
 
 import java.sql.Timestamp;
 import java.time.Instant;
