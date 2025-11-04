@@ -1,5 +1,9 @@
 package org.carpenoctemcloud.redirect_files;
 
+/**
+ * The purpose of this interface is to create classes which handle the link file of a specific OS.
+ * For instance, windows has .url files while macOS has .webloc files.
+ */
 public interface RedirectFileCreator {
     /**
      * Creates the content of a file to redirect towards the resource at the url.

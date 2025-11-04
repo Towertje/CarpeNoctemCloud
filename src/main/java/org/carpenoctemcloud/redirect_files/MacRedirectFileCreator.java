@@ -1,6 +1,17 @@
 package org.carpenoctemcloud.redirect_files;
 
+/**
+ * Class which implements the RedirectFileCreator interface.
+ * Is used to make redirect files for the Mac operating system.
+ */
 public class MacRedirectFileCreator implements RedirectFileCreator {
+
+    /**
+     * Default constructor as the class should only be made through {@link RedirectFileFactory}.
+     */
+    MacRedirectFileCreator() {
+    }
+
     /**
      * Creates the content of a file to redirect towards the resource at the url.
      *

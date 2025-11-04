@@ -25,14 +25,23 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.server.ResponseStatusException;
 
-@SuppressWarnings("SameReturnValue")
+/**
+ * Collection of endpoints which handles sending a downloadable file to the client.
+ * This downloadable file is what will redirect the client.
+ */
 @Controller
+@SuppressWarnings("SameReturnValue")
 @RequestMapping("/redirect-file")
 public class RedirectFileController {
 
     private final RemoteFileService fileService;
     private final Logger logger = LoggerFactory.getLogger(RedirectFileController.class);
 
+    /**
+     * Creates a new controller instance.
+     *
+     * @param fileService The file service to query the files through.
+     */
     public RedirectFileController(RemoteFileService fileService) {
         this.fileService = fileService;
     }
