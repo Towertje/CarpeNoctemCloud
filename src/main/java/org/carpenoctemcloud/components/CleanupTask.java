@@ -2,7 +2,7 @@ package org.carpenoctemcloud.components;
 
 import java.sql.Timestamp;
 import java.time.Instant;
-import org.carpenoctemcloud.remoteFile.RemoteFileService;
+import org.carpenoctemcloud.remote_file.RemoteFileService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -15,8 +15,8 @@ import static org.carpenoctemcloud.configuration.ConfigurationConstants.MAX_AGE_
  */
 @Component
 public class CleanupTask {
+    final Logger logger = LoggerFactory.getLogger(CleanupTask.class);
     private final RemoteFileService fileService;
-    Logger logger = LoggerFactory.getLogger(CleanupTask.class);
 
     /**
      * Constructor of the CleanupTask. It requires the RemoteFileService to delete old files.

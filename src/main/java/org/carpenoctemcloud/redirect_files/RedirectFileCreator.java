@@ -1,4 +1,4 @@
-package org.carpenoctemcloud.redirectFiles;
+package org.carpenoctemcloud.redirect_files;
 
 public interface RedirectFileCreator {
     /**

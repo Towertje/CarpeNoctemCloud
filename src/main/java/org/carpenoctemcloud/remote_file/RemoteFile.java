@@ -1,6 +1,7 @@
-package org.carpenoctemcloud.remoteFile;
+package org.carpenoctemcloud.remote_file;
 
 import java.sql.Timestamp;
+import java.util.Optional;
 
 
 /**
@@ -10,7 +11,9 @@ import java.sql.Timestamp;
  * @param name        The name of the indexed file without its full path.
  * @param downloadURL The url to the file on the remote server.
  * @param lastIndexed The time at which it was indexed last.
+ * @param categoryID  The ID of the category which the item is in.
  */
-public record RemoteFile(Long id, String name, String downloadURL, Timestamp lastIndexed) {
+public record RemoteFile(int id, String name, String downloadURL, Timestamp lastIndexed,
+                         Optional<Integer> categoryID) {
 
 }

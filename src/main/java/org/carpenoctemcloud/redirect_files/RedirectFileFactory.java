@@ -1,4 +1,4 @@
-package org.carpenoctemcloud.redirectFiles;
+package org.carpenoctemcloud.redirect_files;
 
 public class RedirectFileFactory {
     public static RedirectFileCreator getFileCreator(RedirectFilePlatform platform) {

@@ -1,6 +1,13 @@
-package org.carpenoctemcloud.redirectFiles;
+package org.carpenoctemcloud.redirect_files;
 
-public class MacRedirectFileCreator implements RedirectFileCreator {
+public class WindowsRedirectFileCreator implements RedirectFileCreator {
+
+    /**
+     * Default constructor so only the factory can create new Redirector.
+     */
+    WindowsRedirectFileCreator() {
+    }
+
     /**
      * Creates the content of a file to redirect towards the resource at the url.
      *
@@ -9,8 +16,7 @@ public class MacRedirectFileCreator implements RedirectFileCreator {
      */
     @Override
     public String createFileContent(String url) {
-        return "<?xml version=\"1.0\" encoding=\"UTF-8\"?><!DOCTYPE plist PUBLIC \"-//Apple//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\"><plist version=\"1.0\"><dict><key>URL</key><string>" +
-                url + "</string></dict></plist>";
+        return "[InternetShortcut]\n" + "URL=" + url + "\n";
     }
 
     /**
@@ -20,6 +26,6 @@ public class MacRedirectFileCreator implements RedirectFileCreator {
      */
     @Override
     public String getFileExtension() {
-        return ".webloc";
+        return ".url";
     }
 }

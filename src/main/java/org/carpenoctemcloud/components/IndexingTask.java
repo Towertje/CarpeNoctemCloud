@@ -7,7 +7,7 @@ import org.carpenoctemcloud.indexing.IndexingListener;
 import org.carpenoctemcloud.indexing.IndexingListenerImpl;
 import org.carpenoctemcloud.indexing.ServerIndexer;
 import org.carpenoctemcloud.indexing.ServerIndexerSMB;
-import org.carpenoctemcloud.remoteFile.RemoteFileService;
+import org.carpenoctemcloud.remote_file.RemoteFileService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.format.annotation.DurationFormat;

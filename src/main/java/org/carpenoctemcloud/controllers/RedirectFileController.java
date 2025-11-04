@@ -6,11 +6,11 @@ import java.io.IOException;
 import java.util.Optional;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
-import org.carpenoctemcloud.redirectFiles.RedirectFileCreator;
-import org.carpenoctemcloud.redirectFiles.RedirectFileFactory;
-import org.carpenoctemcloud.redirectFiles.RedirectFilePlatform;
-import org.carpenoctemcloud.remoteFile.RemoteFile;
-import org.carpenoctemcloud.remoteFile.RemoteFileService;
+import org.carpenoctemcloud.redirect_files.RedirectFileCreator;
+import org.carpenoctemcloud.redirect_files.RedirectFileFactory;
+import org.carpenoctemcloud.redirect_files.RedirectFilePlatform;
+import org.carpenoctemcloud.remote_file.RemoteFile;
+import org.carpenoctemcloud.remote_file.RemoteFileService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.io.InputStreamResource;
@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.server.ResponseStatusException;
 
+@SuppressWarnings("SameReturnValue")
 @Controller
 @RequestMapping("/redirect-file")
 public class RedirectFileController {

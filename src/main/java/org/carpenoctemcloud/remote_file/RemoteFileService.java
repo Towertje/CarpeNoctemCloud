@@ -1,4 +1,4 @@
-package org.carpenoctemcloud.remoteFile;
+package org.carpenoctemcloud.remote_file;
 
 import java.sql.Timestamp;
 import java.util.List;

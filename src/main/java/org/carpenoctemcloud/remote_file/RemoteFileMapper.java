@@ -1,8 +1,9 @@
-package org.carpenoctemcloud.remoteFile;
+package org.carpenoctemcloud.remote_file;
 
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Optional;
 import org.springframework.jdbc.core.RowMapper;
 
 /**
@@ -18,8 +19,9 @@ public class RemoteFileMapper implements RowMapper<RemoteFile> {
 
     @Override
     public RemoteFile mapRow(ResultSet resultSet, int rowNum) throws SQLException {
-        return new RemoteFile(resultSet.getLong("id"), resultSet.getString("name"),
+        return new RemoteFile(resultSet.getInt("id"), resultSet.getString("name"),
                               resultSet.getString("download_url"),
-                              resultSet.getTimestamp("last_indexed"));
+                              resultSet.getTimestamp("last_indexed"), Optional.ofNullable(
+                resultSet.getObject("category_id", Integer.class)));
     }
 }

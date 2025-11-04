@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 /**
  * Controller for the homepage located at "/".
  */
+@SuppressWarnings("SameReturnValue")
 @Controller
 @RequestMapping("")
 public class HomePageController {
@@ -21,6 +22,7 @@ public class HomePageController {
      * @param model The model of the page, is not used for this one.
      * @return String to the template of the homePage.
      */
+    @SuppressWarnings("SameReturnValue")
     @GetMapping({"", "/"})
     public String getHomePage(Model model) {
         return "homePage";

@@ -1,37 +1,30 @@
 package org.carpenoctemcloud.controllers;
 
-import java.util.Optional;
-import org.carpenoctemcloud.remoteFile.RemoteFile;
-import org.carpenoctemcloud.remoteFile.RemoteFileService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpStatus;
+import org.carpenoctemcloud.remote_file.RemoteFileService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.server.ResponseStatusException;
 
 import static org.carpenoctemcloud.configuration.ConfigurationConstants.MAX_FETCH_SIZE;
 
 /**
  * Mapper for the search page located at "/search/".
  */
+@SuppressWarnings("SameReturnValue")
 @Controller
 @RequestMapping("/search")
-public class searchPageController {
+public class SearchPageController {
 
     final RemoteFileService service;
-    final Logger logger = LoggerFactory.getLogger(searchPageController.class);
 
     /**
      * Constructor of the search page controller.
      *
      * @param service The RemoteFileService used to interact with the RemoteFile table.
      */
-    public searchPageController(RemoteFileService service) {
+    public SearchPageController(RemoteFileService service) {
         this.service = service;
     }
 
