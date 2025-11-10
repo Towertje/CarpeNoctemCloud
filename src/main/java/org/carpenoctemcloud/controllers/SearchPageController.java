@@ -35,9 +35,10 @@ public class SearchPageController {
     /**
      * Main page for the search page.
      *
-     * @param model  The model which contains the variables to be rendered.
-     * @param query  The search query given to the user.
-     * @param offset The offset of the search query.
+     * @param model      The model which contains the variables to be rendered.
+     * @param query      The search query given to the user.
+     * @param offset     The offset of the search query.
+     * @param categoryID The category id to filter on.
      * @return The template of the search page with the found results.
      */
     @GetMapping({"", "/"})
