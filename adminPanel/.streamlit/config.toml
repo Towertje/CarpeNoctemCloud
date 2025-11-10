@@ -1,0 +1,7 @@
+[client]
+toolbarMode = "viewer"
+
+
+[server]
+showEmailPrompt = false
+port = 5001
