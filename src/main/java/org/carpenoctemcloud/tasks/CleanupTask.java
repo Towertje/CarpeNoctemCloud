@@ -21,6 +21,7 @@ public class CleanupTask {
      * Constructor of the CleanupTask. It requires the RemoteFileService to delete old files.
      *
      * @param fileService The RemoteFileService which will be able to delete old files.
+     * @param logService  The service which will add records of the cleanup tasks.
      */
     public CleanupTask(DeleteTaskLogService logService, RemoteFileService fileService) {
         this.logService = logService;

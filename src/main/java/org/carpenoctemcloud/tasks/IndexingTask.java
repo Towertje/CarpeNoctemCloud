@@ -4,8 +4,8 @@ import java.sql.Timestamp;
 import java.time.Instant;
 import org.carpenoctemcloud.index_task_log.IndexTaskLogService;
 import org.carpenoctemcloud.indexing.IndexingListener;
-import org.carpenoctemcloud.indexing_listeners.IndexingListenerImpl;
 import org.carpenoctemcloud.indexing.ServerIndexer;
+import org.carpenoctemcloud.indexing_listeners.IndexingListenerImpl;
 import org.carpenoctemcloud.remote_file.RemoteFileService;
 import org.carpenoctemcloud.smb.ServerIndexerSMB;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -24,6 +24,7 @@ public class IndexingTask {
      * Constructor for the indexing task, Requires remoteFileService to save the indexed files.
      *
      * @param remoteFileService The remoteFileService handling db requests.
+     * @param logService        The log service used to store the indexing task result.
      */
     public IndexingTask(RemoteFileService remoteFileService, IndexTaskLogService logService) {
         this.remoteFileService = remoteFileService;

@@ -7,6 +7,12 @@ public abstract class IndexingListener {
     private long totalFilesIndexed = 0;
 
     /**
+     * Initiates a new listener.
+     */
+    public IndexingListener() {
+    }
+
+    /**
      * Function which is called when a new file is indexed.
      *
      * @param file The file which was indexed by the ServerIndexer.
@@ -36,14 +42,27 @@ public abstract class IndexingListener {
         this.onNewFileIndexed(file);
     }
 
+    /**
+     * Fires the onErrorEvent event to the listener.
+     *
+     * @param exception The error that occurred.
+     */
     final public void fireErrorEvent(Exception exception) {
         this.onErrorWhileIndexing(exception);
     }
 
+    /**
+     * Fires event which indicates that indexing is done.
+     */
     final public void fireIndexingCompleteEvent() {
         this.onIndexingComplete();
     }
 
+    /**
+     * Gets the total amount of files that have been successfully indexed.
+     *
+     * @return The amount of files that have been indexed.
+     */
     final public long getTotalFilesIndexed() {
         return totalFilesIndexed;
     }
