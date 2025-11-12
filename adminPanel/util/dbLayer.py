@@ -35,3 +35,27 @@ class DbLayer:
             ret[i] = tuple(tmp)
             cur.close()
         return ret
+
+    def get_indexed_tables_limit_10(self):
+        cur: cursor = self._conn.cursor()
+        cur.execute("""
+                    select started, ended, files_indexed
+                    from index_task_log
+                    order by started desc
+                    limit 10;
+                    """)
+        result = cur.fetchall()
+        cur.close()
+        return result
+
+    def get_cleanup_tables_limit_10(self):
+        cur: cursor = self._conn.cursor()
+        cur.execute("""
+                    select started, ended, files_deleted
+                    from delete_task_log
+                    order by started desc
+                    limit 10;
+                    """)
+        result = cur.fetchall()
+        cur.close()
+        return result
