@@ -1,23 +1,34 @@
 @import "bootstrap.min.css";
 
-html {
+html, body {
     overflow-x: hidden;
     max-width: 100vw;
 }
 
 body * {
-    max-width: 100vw;
-    padding: 0;
-    margin: 0;
+    box-sizing: border-box;
 }
 
-.download {
-    font-size: 0.9rem;
+/* --- General Layout --- */
+.search-form input[type="search"] {
+    min-width: 50%;
 }
 
+.category-select {
+    min-width: 150px;
+    font-size: 1rem;
+    padding: 0.5rem 0.75rem;
+}
+
+/* Ensure consistent max width */
+.container-fluid > * {
+    width: 100%;
+}
+
+/* --- Results --- */
 .result {
     background: var(--bs-light-bg-subtle);
-    transition: all ease 0.1s;
+    transition: all 0.15s ease-in-out;
 }
 
 .result:hover {
@@ -31,7 +42,7 @@ body * {
 }
 
 .platformImage {
-    transition: all ease 0.1s;
+    transition: all 0.1s ease-in-out;
 }
 
 .platformImage:hover {
@@ -39,6 +50,7 @@ body * {
     transform: scale(1.1);
 }
 
+/* --- Tooltip --- */
 .customTooltip {
     position: relative;
     display: inline-flex;
@@ -68,5 +80,3 @@ body * {
     visibility: visible;
     opacity: 1;
 }
-
-
