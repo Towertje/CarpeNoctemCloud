@@ -9,11 +9,6 @@ body {
     box-sizing: border-box;
 }
 
-/* --- General Layout --- */
-.search-form input[type="search"] {
-    min-width: 50%;
-}
-
 .category-select {
     min-width: 150px;
     font-size: 1rem;
@@ -48,6 +43,7 @@ body {
     transform: scale(1.1);
 }
 
+/* tooltip */
 .customTooltip {
     position: relative;
     display: inline-flex;
@@ -77,5 +73,3 @@ body {
     visibility: visible;
     opacity: 1;
 }
-
-
