@@ -55,7 +55,6 @@ public class SearchPageController {
         model.addAttribute("results", fileService.searchRemoteFiles(query, offset, categoryID));
         model.addAttribute("categories", categoryService.getAllCategories());
         model.addAttribute("currentCategory", categoryID);
-        model.addAttribute("totalFiles", fileService.getTotalFiles(categoryID));
 
         return "searchPage";
     }

@@ -44,12 +44,16 @@
                 <div class="border-1 border border-black justify-content-evenly my-1 p-2 rounded-1 result row"
                      th:each="result : ${results}">
 
-                    <div class="col-auto align-content-center" th:if="${!result.categoryID().isEmpty()}">
-                        <img th:if="${result.categoryID().get() == 1}" th:src="@{/img/film.svg}" alt="file logo"
+                    <div class="col-auto align-content-center"
+                         th:if="${!result.categoryID().isEmpty()}">
+                        <img th:if="${result.categoryID().get() == 1}" th:src="@{/img/film.svg}"
+                             alt="file logo"
                              class="fileImage">
-                        <img th:if="${result.categoryID().get() == 2}" th:src="@{/img/music.svg}" alt="file logo"
+                        <img th:if="${result.categoryID().get() == 2}" th:src="@{/img/music.svg}"
+                             alt="file logo"
                              class="fileImage">
-                        <img th:if="${result.categoryID().get() == 3}" th:src="@{/img/image.svg}" alt="file logo"
+                        <img th:if="${result.categoryID().get() == 3}" th:src="@{/img/image.svg}"
+                             alt="file logo"
                              class="fileImage">
                     </div>
                     <div class="col-auto justify-content-center align-content-center"
@@ -73,7 +77,8 @@
                             <a class="download align-content-center"
                                th:href="'/redirect-file/WINDOWS/' + ${result.id()}"
                                download>
-                                <img th:src="@{/img/windows.svg}" alt="Windows" class="fileImage platformImage"
+                                <img th:src="@{/img/windows.svg}" alt="Windows"
+                                     class="fileImage platformImage"
                                      height="24">
                             </a>
                             <span class="tooltiptext">Download for Windows</span>
@@ -82,7 +87,8 @@
                             <a class="download align-content-center"
                                th:href="'/redirect-file/MAC/' + ${result.id()}"
                                download>
-                                <img th:src="@{/img/mac.svg}" alt="macOS" class="fileImage platformImage" height="24">
+                                <img th:src="@{/img/mac.svg}" alt="macOS"
+                                     class="fileImage platformImage" height="24">
                             </a>
                             <span class="tooltiptext">Download for MacOS</span>
                         </div>
@@ -90,12 +96,6 @@
                 </div>
             </div>
         </div>
-    </div>
-    <!-- pages -->
-    <div class="justify-content-center flex-column my-2">
-        <p class="m-1 text-center">Page <span th:text="${offset/maxFetchSize}"></span> of <span th:text="${totalFiles/maxFetchSize}"></span> </p>
-        <p class="m-1 text-center">Showing results <span th:text="${offset+1}"></span> to <span
-                th:text="${offset+results.size()}"></span> of <span th:text="${totalFiles}"></span></p>
     </div>
     <div class="d-flex flex-row justify-content-center my-2 mb-2">
         <form action="/search" th:unless="${offset==0}">
