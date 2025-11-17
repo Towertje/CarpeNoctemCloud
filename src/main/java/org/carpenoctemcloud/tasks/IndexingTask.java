@@ -42,7 +42,7 @@ public class IndexingTask {
 
         Timestamp startTime = Timestamp.from(Instant.now());
 
-        for (String smbServer : SmbConstants.smbServers) {
+        for (String smbServer : SmbConstants.SMB_SERVERS) {
             ServerIndexer indexer = new ServerIndexerSMB(smbServer);
             indexer.indexServer(listener);
         }

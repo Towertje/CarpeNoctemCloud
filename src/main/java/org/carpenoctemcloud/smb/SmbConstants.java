@@ -8,7 +8,7 @@ public class SmbConstants {
     /**
      * Urls to available smb servers.
      */
-    public final static String[] smbServers =
+    public final static String[] SMB_SERVERS =
             {"spitfire.student.utwente.nl", "stroopwafel.student.utwente.nl",
                     "univac.student.utwente.nl", "campuslaan53.student.utwente.nl"};
 

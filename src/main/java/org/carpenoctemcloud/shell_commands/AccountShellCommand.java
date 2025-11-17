@@ -1,4 +1,4 @@
-package org.carpenoctemcloud.shellCommands;
+package org.carpenoctemcloud.shell_commands;
 
 import org.carpenoctemcloud.account.AccountService;
 import org.springframework.shell.standard.ShellComponent;
@@ -15,7 +15,7 @@ public class AccountShellCommand {
     /**
      * Creates a new AccountShellCommand.
      *
-     * @param accountService An account service to create new account.
+     * @param accountService An account service used to create a new account.
      */
     public AccountShellCommand(AccountService accountService) {
         this.accountService = accountService;
@@ -39,7 +39,7 @@ public class AccountShellCommand {
         try {
             int id = accountService.createAccount(name, email, password, isAdmin);
             accountService.activateAccount(id);
-        } catch (Exception e) {
+        } catch (RuntimeException e) {
             return e.getMessage();
         }
         return "Created account.";
