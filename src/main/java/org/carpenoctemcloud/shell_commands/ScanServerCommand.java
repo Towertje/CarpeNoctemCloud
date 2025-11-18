@@ -13,10 +13,18 @@ import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
 import org.springframework.shell.standard.ShellOption;
 
+/**
+ * Utility class for commands to scan servers manually.
+ */
 @ShellComponent
 public class ScanServerCommand {
     private final RemoteFileService fileService;
 
+    /**
+     * Creates a new object to store the shell command definitions.
+     *
+     * @param fileService The service used to store files.
+     */
     public ScanServerCommand(RemoteFileService fileService) {
         this.fileService = fileService;
     }

@@ -7,12 +7,20 @@ import org.carpenoctemcloud.remote_file.RemoteFileService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * Implementation of {@link IndexingListener} which saves to the database using batches instead of 1 by 1.
+ */
 public class IndexingListenerBatch extends IndexingListener {
     private final Logger logger;
     private final int MAX_BUFFER_SIZE = 1000;
     private final ArrayList<IndexedFile> buffer;
     private final RemoteFileService fileService;
 
+    /**
+     * Creates a new IndexingListenerBatch and instantiates the underlying buffer.
+     *
+     * @param fileService The service to save the found files to.
+     */
     public IndexingListenerBatch(RemoteFileService fileService) {
         this.fileService = fileService;
         logger = LoggerFactory.getLogger(IndexingListenerBatch.class);
