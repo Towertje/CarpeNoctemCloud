@@ -103,6 +103,11 @@ public class RemoteFileService {
         return Optional.of(result.getFirst());
     }
 
+    /**
+     * Adds a list of indexed files to the database by collecting them in a batch.
+     *
+     * @param indexedFiles The list of indexed files to save.
+     */
     public void addRemoteFiles(List<IndexedFile> indexedFiles) {
         SqlParameterSource[] sources = new SqlParameterSource[indexedFiles.size()];
 
