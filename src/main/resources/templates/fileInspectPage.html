@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset=" UTF-8">
+    <title>Carpe Noctem Cloud</title>
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+</head>
+<body data-bs-theme="dark">
+<div>
+    <!-- nav -->
+    <div th:replace="components/header :: header (activePage = 'search')"></div>
+    <!-- content -->
+    <div class="my-3">
+        <div class="my-2 w-75 mx-auto">
+            <h2 th:text="${resultFile.name()}"></h2>
+        </div>
+    </div>
+    <!-- footer -->
+    <div th:replace="components/footer :: footer"></div>
+
+</div>
+</body>
+</html>
