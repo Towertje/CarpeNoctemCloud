@@ -20,6 +20,14 @@ public abstract class IndexingListener {
     abstract protected void onNewFileIndexed(IndexedFile file);
 
     /**
+     * Function which is called when a new directory is found.
+     *
+     * @param serverName The host name of the server.
+     * @param path       The path to the directory.
+     */
+    abstract protected void onDirectoryIndexed(String serverName, String path);
+
+    /**
      * When the ServerIndexer has an error, the error will be given to the listener. For logging purposes.
      * The ServerIndexer will terminate or continue by itself.
      *
@@ -40,6 +48,16 @@ public abstract class IndexingListener {
     final public void fireNewFileIndexedEvent(IndexedFile file) {
         this.totalFilesIndexed++;
         this.onNewFileIndexed(file);
+    }
+
+    /**
+     * Fires the NewDirectoryEvent for when a new directory is discovered.
+     *
+     * @param serverName The name of the server to fire it for.
+     * @param path       The path to the folder.
+     */
+    final public void fireNewDirectoryEvent(String serverName, String path) {
+        this.onDirectoryIndexed(serverName, path);
     }
 
     /**

@@ -73,14 +73,19 @@ public class ServerIndexerSMB implements ServerIndexer {
                         new IllegalArgumentException("Given dir was not an actual directory."));
                 return;
             }
-
+            listener.fireNewDirectoryEvent(serverURL, dir.getPath()
+                    .substring(("smb://" + serverURL).length()));
             for (SmbFile entry : dir.listFiles()) {
                 if (entry.isDirectory()) {
                     walkDirectory(entry, listener);
                     continue;
                 }
-                final String fileURL = "file://///" + entry.toString().replaceAll("^smb://", "");
-                listener.fireNewFileIndexedEvent(new IndexedFile(entry.getName(), fileURL));
+
+                String path = entry.getPath();
+                String fileName = entry.getName();
+                path = path.substring(("smb://" + serverURL).length(),
+                                      path.length() - fileName.length());
+                listener.fireNewFileIndexedEvent(new IndexedFile(path, fileName, serverURL));
             }
         } catch (SmbException e) {
             listener.fireErrorEvent(e);
