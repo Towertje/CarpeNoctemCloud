@@ -12,12 +12,6 @@ public class MacRedirectFileCreator implements RedirectFileCreator {
     MacRedirectFileCreator() {
     }
 
-    /**
-     * Creates the content of a file to redirect towards the resource at the url.
-     *
-     * @param url The url to redirect the user to.
-     * @return The contents of the file in a string.
-     */
     @Override
     public String createFileContent(String url) {
         return """

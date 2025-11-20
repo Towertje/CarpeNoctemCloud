@@ -2,12 +2,13 @@ package org.carpenoctemcloud.shell_commands;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
-import org.carpenoctemcloud.ftp.ServerIndexerFTP;
+import org.carpenoctemcloud.directory.DirectoryService;
 import org.carpenoctemcloud.indexing.IndexingListener;
 import org.carpenoctemcloud.indexing.ServerIndexer;
 import org.carpenoctemcloud.indexing_listeners.IndexingListenerBatch;
 import org.carpenoctemcloud.remote_file.RemoteFileService;
 import org.carpenoctemcloud.smb.ServerIndexerSMB;
+import org.carpenoctemcloud.smb.SmbConstants;
 import org.springframework.format.annotation.DurationFormat;
 import org.springframework.format.datetime.standard.DurationFormatterUtils;
 import org.springframework.shell.standard.ShellComponent;
@@ -20,14 +21,17 @@ import org.springframework.shell.standard.ShellOption;
 @ShellComponent
 public class ScanServerCommand {
     private final RemoteFileService fileService;
+    private final DirectoryService directoryService;
 
     /**
      * Creates a new object to store the shell command definitions.
      *
-     * @param fileService The service used to store files.
+     * @param fileService      The service used to store files.
+     * @param directoryService Service given to the listeners to create directories.
      */
-    public ScanServerCommand(RemoteFileService fileService) {
+    public ScanServerCommand(RemoteFileService fileService, DirectoryService directoryService) {
         this.fileService = fileService;
+        this.directoryService = directoryService;
     }
 
     /**
@@ -39,18 +43,23 @@ public class ScanServerCommand {
     @ShellMethod(key = "scanSMB", value = "Scans an SMB server.")
     public String ScanSMB(@ShellOption(value = "Url of the server to index.") String url) {
         ServerIndexer indexer = new ServerIndexerSMB(url);
-        IndexingListener listener = new IndexingListenerBatch(fileService);
-        return timeIndexing(url, indexer, listener);
+        IndexingListener listener = new IndexingListenerBatch(fileService, directoryService);
+        return timedIndexing(url, indexer, listener);
     }
 
-    @ShellMethod(key = "scanFTP", value = "Scans an FTP server.")
-    public String scanFTP(@ShellOption(value = "Url of the server to index.") String url) {
-        ServerIndexer indexer = new ServerIndexerFTP(url);
-        IndexingListener listener = new IndexingListenerBatch(fileService);
-        return timeIndexing(url, indexer, listener);
+    /**
+     * Scans all known smb servers manually.
+     */
+    @ShellMethod(key = "scanAllSMB", value = "Scans all SMB servers.")
+    public void ScanAllSMB() {
+        IndexingListener listener = new IndexingListenerBatch(fileService, directoryService);
+        for (String url : SmbConstants.SMB_SERVERS) {
+            ServerIndexer indexer = new ServerIndexerSMB(url);
+            System.out.println(timedIndexing(url, indexer, listener));
+        }
     }
 
-    private String timeIndexing(String url, ServerIndexer indexer, IndexingListener listener) {
+    private String timedIndexing(String url, ServerIndexer indexer, IndexingListener listener) {
         LocalDateTime start = LocalDateTime.now();
         indexer.indexServer(listener);
         LocalDateTime end = LocalDateTime.now();
