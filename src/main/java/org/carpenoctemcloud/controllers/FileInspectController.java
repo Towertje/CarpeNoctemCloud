@@ -40,11 +40,11 @@ public class FileInspectController {
     @GetMapping({"/{id}", "/{id}/"})
     public String fileInspectPage(Model model, @PathVariable int id) {
         Optional<RemoteFile> file = fileService.getRemoteFileByID(id);
-        //String server = file.get().downloadURL().replaceFirst("^file:/*", "").split("/")[0];
-
+        // Should probably update this in the future to also show directories etc. Just a very basic implementation for now.
+        String server = fileService.getDownloadURL(file.get().id()).replaceFirst("^file:/*", "").split("/")[0];
 
         model.addAttribute("resultFile", file.get());
-        model.addAttribute("serverURL", "placeholder.nl");
+        model.addAttribute("serverURL", server);
 
         return "fileInspectPage";
     }
