@@ -23,10 +23,6 @@ main {
     padding: 0.5rem 0.75rem;
 }
 
-.container-fluid > * {
-    width: 100%;
-}
-
 .result {
     background: var(--bs-light-bg-subtle);
     transition: all 0.15s ease-in-out;
