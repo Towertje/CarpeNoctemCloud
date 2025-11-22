@@ -34,7 +34,7 @@
             <h3 class="col align-content-center mb-0" th:text="${resultFile.name()}"></h3>
         </div>
         <strong>Server:</strong>
-        <p th:text="${serverURL}"></p>
+        <p th:text="${server.host()}"></p>
 
         <strong>Download:</strong>
         <div class="d-flex flex-row p-1">
@@ -60,7 +60,8 @@
                        download>
                         <div class="d-flex justify-content-center"
                              style="width:32px;">
-                            <img th:src="@{/img/windows.svg}" class="fileImage platformImage" alt="Windows">
+                            <img th:src="@{/img/windows.svg}" class="fileImage platformImage"
+                                 alt="Windows">
                         </div>
                         <span>Download for Windows</span>
                     </a>
@@ -72,9 +73,10 @@
                        download>
                         <div class="d-flex justify-content-center"
                              style="width:32px;">
-                            <img th:src="@{/img/mac.svg}" class="fileImage platformImage" alt="macOS">
+                            <img th:src="@{/img/mac.svg}" class="fileImage platformImage"
+                                 alt="macOS">
                         </div>
-                        <span>Download for MacOS</span>
+                        <span>Download for macOS</span>
                     </a>
                 </li>
             </ul>
